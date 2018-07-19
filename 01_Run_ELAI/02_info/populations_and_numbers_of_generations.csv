@@ -1,0 +1,3 @@
+#This fils should contain your population name and the estimated number of generations = parameter mg in ELAI. Exemple:
+POP1,8
+POP2,10
