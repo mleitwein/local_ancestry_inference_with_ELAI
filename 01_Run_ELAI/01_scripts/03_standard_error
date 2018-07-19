@@ -1,0 +1,55 @@
+library(dplyr)
+library(magrittr)
+library(data.table)
+library(reshape2)
+
+
+standard_error <- function (pop, g, LG){
+
+  
+      PATH=("01_Run_ELAI/06_outputELAI/")
+
+      file_list= list.files(path=PATH, pattern=paste0(pop,".sf",LG,".replicate*[0-9]*.numgen",g,".ps21.txt"))
+      print(file_list)
+      
+  
+      list.df= lapply(file_list, function(x) read.table( x))
+     
+  
+      # empty list 
+        melty_list = rep( list(list()), length(list.df)) 
+  
+        melty_list = lapply(list.df, function(x) melt(as.matrix(x)))
+  
+  
+        Nboots=length(melty_list) # N réplicats
+  
+        res <-  Reduce(function(...) merge(...,by=c("Var1", 'Var2'), all=F), melty_list) %>% #on merge les fichiers 
+                        set_colnames(., c("Var1", "Var2", as.character(seq(1,Nboots,1)))) %>% #on rename les header pour si non on a les même nom
+                          mutate(., cell_mean = select(., -Var1, -Var2) %>% apply(.,1, sd)) # on calcul la moyenne par fichier
+        
+  
+      #resultat des moyennes par cellule sur une list de dataframes
+        res_mean_cell<-dcast(res,  Var1 ~ Var2, value.var = "cell_mean")
+        res_mean_cell[1] <- NULL  # remove individuals 
+        
+        filename <- paste0("/Volumes/data/maeva_leitwein/salvelinus/05_ELAI/01_Run_ELAI/07_Medianes/",pop,"_mg",g,".sf",LG,"_EcartTypereplicates.ps21.txt")
+        write.table(res_mean_cell, filename, quote = FALSE, col.names=FALSE,row.names=FALSE,sep="\t")
+
+  }
+  
+
+#on Run la fonction pour toutes les pops et tous les LG
+
+data<-read.table("02_info/populations_and_numbers_of_generations.csv.all.pops", sep=",")
+
+
+    for (i in c(1:nrow(data))){
+      for (j in c(1:42)){
+       arg1=data[i,1] %>% as.character(.)
+       arg2=data[i,2]%>% as.character(.)
+       
+       standard_error(arg1, arg2, as.character(j))
+      }
+    }  
+    
