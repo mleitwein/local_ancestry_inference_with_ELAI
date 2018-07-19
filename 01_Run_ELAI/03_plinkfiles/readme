@@ -1,0 +1,3 @@
+# Plink output file per populations
+*.ped
+*.map
