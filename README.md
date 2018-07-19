@@ -27,21 +27,35 @@ ELAI need to be run sepatatly for each linkage groups.
 
 For example, if you have a source population of domestique strain and a wild populations containing both pure and admixted individuals : 
 ##### Creation of plink files 
-This is a code example for creating plink files for you populations and need to be adjusted in function of your sampling desing. 
+This an example of a code for creating plink files for your populations and this need to be adjusted in function of your sampling desing. 
 
 ```
 cat 02_info/populations_and_numbers_of_generations.csv.all.pops | while read j
-do
-	pop=$(echo "$j" | cut -d "," -f 1)
-	mkdir 04_plinkfiles/$pop
-						for i in 02_info/WL_LG/*
-						do
-						WL=$(echo $i| awk -F"/" '{print $3}' | awk -F"_" '{print $2}')
-						echo $WL
-						vcftools --vcf $j.vcf --keep WL_pop_wild --positions $i --plink --out ${pop}/${pop}.${WL}.wild #for the admixted individuals
-            vcftools --vcf $j.vcf --keep WL_pop_dom --positions $i --plink --out ${pop}/${pop}.${WL}.dom #for the domestic individuals
-						done 
-						done
+    do
+    pop=$(echo "$j" | cut -d "," -f 1)
+    mkdir 04_plinkfiles/$pop
+    for i in 02_info/WL_LG/*
+	do
+	WL=$(echo $i| awk -F"/" '{print $3}' | awk -F"_" '{print $2}')
+	echo $WL
+	vcftools --vcf 03_vcf/$j.vcf --keep 02_info/WL_pop_wild --positions $i --plink --out 04_plinkfiles/${pop}/${pop}.${WL}.wild #for the admixted individuals
+        vcftools --vcf 03_vcf/$j.vcf --keep 02_info/WL_pop_dom --positions $i --plink --out 04_plinkfiles/${pop}/${pop}.${WL}.dom #for the domestic individuals
+     done 
+done
   ```
   
-  
+##### Creation of genotype files with BIMBAM
+This an example of a code for creating plink files for your populations and this need to be adjusted in function of your sampling desing. 
+```
+cat 02_info/populations_and_numbers_of_generations.csv.all.pops | while read j
+    do
+    pop=$(echo "$j" | cut -d "," -f 1)
+    mkdir 05_BimBam/$pop
+    for i in {1..42} #number of linkage groups
+	do
+	plink --ped 04_plinkfile/${pop}/${pop}.sf${i}.wild.ped --map 04_plinkfile/${pop}/${pop}.sf${i}.wild.map --recode bimbam  --out 05_BimBam_sfon/${pop}/${pop}.sf${i}.wild --chr-set 42
+	plink --ped 04_plinkfile/${pop}/${pop}.sf${i}.dom.ped --map 04_plinkfile/${pop}/${pop}.sf${i}.dom.map --recode bimbam  --out 05_BimBam_sfon/${pop}/${pop}.sf${i}.dom --chr-set 42
+	done
+done	
+
+```
