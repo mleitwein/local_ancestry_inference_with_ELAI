@@ -15,7 +15,8 @@ Also see ELAI documentation http://www.haplotype.org/download/elai-manual.pdf
 ELAI: http://www.haplotype.org/elai.html
 Vcftools: https://vcftools.github.io/man_latest.html
 
-## Workflow
+## 01_Run_ELAI
+launched from 01_Run_ELAI folder 
 
 ### STEP1: Creation of ELAI input format from vcf files
 
