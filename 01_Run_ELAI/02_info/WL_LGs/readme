@@ -1,1 +1,4 @@
-# file containing the WL for each of your linkage groups
+# file containing the White list for each of your linkage groups
+#Each white list name as, with X the LG number: 
+
+WL_X 
