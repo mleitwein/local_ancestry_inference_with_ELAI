@@ -1,0 +1,7 @@
+# ELAI output files for each linkage groups and each poipulations 
+
+*.pop.Lg*.replicate*.admix.txt
+*.pop.Lg*.replicate*.log.txt
+*.pop.Lg*.replicate*.em.txt
+*.pop.Lg*.replicate*.ps21.txt
+*.pop.Lg*.replicate*.snpinfo.txt
