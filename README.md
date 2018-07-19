@@ -17,7 +17,7 @@ Vcftools: https://vcftools.github.io/man_latest.html
 
 ## Workflow
 
-#### STEP1: Creation of ELAI input format from vcf files
+### STEP1: Creation of ELAI input format from vcf files
 
 ELAI need input files for the source(s) population(s) (1 or 2) and the admixted populations. 
 ELAI need to be run sepatatly for each linkage groups.
@@ -44,6 +44,7 @@ cat 02_info/populations_and_numbers_of_generations.csv.all.pops | while read j
 done
   ```
   
+ 
 ##### Creation of genotype files with BIMBAM
 This an example of a code for creating plink files for your populations and this need to be adjusted in function of your sampling desing. 
 ```
@@ -59,3 +60,16 @@ cat 02_info/populations_and_numbers_of_generations.csv.all.pops | while read j
 done	
 
 ```
+
+
+### STEP2: Run ELAI for all your populations
+  
+  A file containing the populations names and the number of estimated generation since admixture is needed
+  Example for 20 replicates 
+  
+  ```
+  ./01_scripts/01_run_elai_all_populations.sh 20
+  
+  ```
+  
+  
