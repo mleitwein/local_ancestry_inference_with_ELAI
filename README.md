@@ -72,4 +72,17 @@ done
   
   ```
   
-  
+  ### STEP3: Compute the Median and sd of each ELAI replicates for all your populations
+
+```
+
+01_scripts/02_Mediane_Replicates.R
+
+01_scripts/03_standard_error.R
+
+```
+
+
+
+
+
