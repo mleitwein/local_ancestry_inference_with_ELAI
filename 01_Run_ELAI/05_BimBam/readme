@@ -1,0 +1,5 @@
+# BimBam output for each populations
+*.geno.txt
+*.pheno.txt
+*.pos.txt
+*.log
