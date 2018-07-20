@@ -77,13 +77,19 @@ done
 
 ```
 
-01_scripts/02_Mediane_Replicates.R
+R 01_scripts/02_Mediane_Replicates.R
 
-01_scripts/03_standard_error.R
+R 01_scripts/03_standard_error.R
 
 ```
 
-
-
+  ### STEP4: Make some plots to visualise ELAI outputs 
+  
+ A list with the populations names and numbers of individuals is needed. 
+ Also, the plots settings and margins might be changed in function of the individuals numbers.
+ 
+  ```
+  R 01_scripts/04_R_plot_ELAIoutput.R
+ ```
 
 
