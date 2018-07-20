@@ -39,8 +39,8 @@ cat 02_info/populations_and_numbers_of_generations.csv.all.pops | while read j
 	do
 	WL=$(echo $i| awk -F"/" '{print $3}' | awk -F"_" '{print $2}')
 	echo $WL
-	vcftools --vcf 03_vcf/$j.vcf --keep 02_info/WL_pop_wild --positions $i --plink --out 04_plinkfiles/${pop}/${pop}.${WL}.wild #for the admixted individuals
-        vcftools --vcf 03_vcf/$j.vcf --keep 02_info/WL_pop_dom --positions $i --plink --out 04_plinkfiles/${pop}/${pop}.${WL}.dom #for the domestic individuals
+	vcftools --vcf 03_vcf/$j.vcf --keep 02_info/${j}.WL_pop_wild --positions $i --plink --out 04_plinkfiles/${pop}/${pop}.${WL}.wild #for the admixted individuals
+        vcftools --vcf 03_vcf/$j.vcf --keep 02_info/${j}.WL_pop_dom --positions $i --plink --out 04_plinkfiles/${pop}/${pop}.${WL}.dom #for the domestic individuals
      done 
 done
   ```
