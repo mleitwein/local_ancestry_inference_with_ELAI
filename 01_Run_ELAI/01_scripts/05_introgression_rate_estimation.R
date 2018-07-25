@@ -31,7 +31,7 @@ introgression <- function (pop, LG){
         name<-sub("_MEDiANreplicates\\.ps21\\.txt", '', panel_list [[1]])
         filename <- paste0("../03_introgression_rate/02_data/",name, "_introgression_rate.txt")
         write.table(df, filename, quote = FALSE, col.names=TRUE,row.names=FALSE, sep="\t")
-
+}
 
 data<-read.table("02_info/populations_and_number_of_individuals.csv", sep=",")
 
