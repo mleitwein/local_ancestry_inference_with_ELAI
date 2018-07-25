@@ -6,7 +6,7 @@
 
 introgression <- function (pop, LG){
 
-      panel_list = list.files(path="07_Medianes/", pattern=paste0(pop,"_mg*[0-9].sf",LG,"_MEDiANreplicates.ps21.txt"))
+      panel_list = list.files(path="07_Medianes/", pattern=paste0(pop,"_mg*[0-9]*.sf",LG,"_MEDiANreplicates.ps21.txt"))
       panel= lapply(paste0("07_Medianes/",panel_list), function(x) read.table( x))
       panel<-panel[[1]]
       
@@ -18,8 +18,8 @@ introgression <- function (pop, LG){
         
       #We add the SNPs informations
       
-        snpinfo_list = list.files(path="06_outputELAI/", pattern=paste0(pop,".sf",LG,".replicate01.numgen*[0-9].snpinfo.txt"))
-        snpinfo= lapply(paste0("06_outputELAI",snpinfo_list), function(x) read.table( x, header=T))
+        snpinfo_list = list.files(path="06_outputELAI/", pattern=paste0(pop,".sf",LG,".replicate01.numgen*[0-9]*.snpinfo.txt"))
+        snpinfo= lapply(paste0("06_outputELAI/",snpinfo_list), function(x) read.table( x, header=T))
         snpinfo<-snpinfo[[1]]	
         snp <-as.data.frame(snpinfo[,2])
 
