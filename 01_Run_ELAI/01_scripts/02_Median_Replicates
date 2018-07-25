@@ -24,9 +24,9 @@ Mediane <- function (pop, g, LG){
   
         Nboots=length(melty_list) # N réplicats
   
-        res <-  Reduce(function(...) merge(...,by=c("Var1", 'Var2'), all=F), melty_list) %>% #on merge les fichiers 
-                        set_colnames(., c("Var1", "Var2", as.character(seq(1,Nboots,1)))) %>% #on rename les header pour si non on a les même nom
-                          mutate(., cell_mean = select(., -Var1, -Var2) %>% apply(.,1, median)) # on calcul la moyenne par fichier
+        res <-  Reduce(function(...) merge(...,by=c("Var1", 'Var2'), all=F), melty_list) %>% #merged files 
+                        set_colnames(., c("Var1", "Var2", as.character(seq(1,Nboots,1)))) %>% #rename headers
+                          mutate(., cell_mean = select(., -Var1, -Var2) %>% apply(.,1, median)) # compute the median
         
   
       #resultat des moyennes par cellule sur une list de dataframes
