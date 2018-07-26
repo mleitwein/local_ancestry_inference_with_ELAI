@@ -45,11 +45,11 @@ library(dplyr)
         }
         
         
-        # settings the plot
+        # settings the plot which need to be adjusted in function of the data
         
-        with(d, plot(pos,rep(0.1,nrow(d)),ylim=c(0,0.6),type = "n", main=title ,bty="n",ylab="introgression rate",xlab="LGs",xaxt="n",yaxt="n",col="white"))
+        with(d, plot(pos,rep(0.1,nrow(d)),ylim=c(0,0.7),type = "n", main=title ,bty="n",ylab="introgression rate",xlab="LGs",xaxt="n",yaxt="n",col="white"))
         axis(1, at=ticks, lab=chrlist, cex.axis=0.9)
-        axis(2, at=c(0, 0.2, 0.4, 0.6), cex.axis=0.8,line = -1.5,las=1)
+        axis(2, at=c(0, 0.2, 0.4, 0.6, 0.7), cex.axis=0.8,line = -1.5,las=1)
         
         ### plot lines and rectangles with different colors by LG 
         for (i in (1:22)) {
