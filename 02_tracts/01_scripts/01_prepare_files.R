@@ -25,7 +25,7 @@ step1 <- function(pop,LG){
 print ("END FIRST STEP")
 
 
-data <- read.table("02_tracts/02_info/populations_and_numbers_of_generations.csv.all.pops", sep=",")
+data <- read.table("02_tracts/02_info/populations_and_numbers_of_generations.csv", sep=",")
 
 
     for (i in c(1:nrow(data))){
