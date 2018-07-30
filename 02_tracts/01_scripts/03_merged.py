@@ -33,10 +33,10 @@ with open(output_file, "w") as outfile:
 
     for f in files:
 
-         # grep LG number : temps_files_OMR/ABE_sf1.dom._0.05_0.95_HET.res2
+         # grep LG number :example filename: temps_files_OMR/ABE_sf1.dom._0.05_0.95_HET.res2
         num = f.split("_sf")[1].split(".dom")[0]
-        pop = f.split("/")[1].split("_")[0] # la pop
-        traitement = f.split(".9_")[1].split("seuil")[0] # traitement tract 1 HET ou 2 HOM
+        pop = f.split("/")[1].split("_")[0] 
+        traitement = f.split(".9_")[1].split("seuil")[0] 
 
         lines = open(f, "r").readlines()
         result = []
