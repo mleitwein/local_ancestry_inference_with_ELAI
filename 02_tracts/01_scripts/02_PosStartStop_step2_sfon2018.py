@@ -10,25 +10,15 @@ import csv
 import numpy
 
 """pwd linux"""
-#for pop in temps_file_OMR :
-#PATH = os.path.join("/Volumes/data/maeva_leitwein/salvelinus/05_ELAI/02_tracts_introgression/", pop/)
+
 try:
     PATH = sys.argv[1]
 except:
     print(__doc__)
     sys.exit(1)
 
-#PATH = "/Volumes/drobo2/maeva_leitwein/salvelinus/05_ELAI/02_tracts_introgression/temps_file_OMR"
-# Fichier de resultat apres run script prepareFile.R
 
 RAW_DATA_EXT_DOM = ".dom.res"
-# RAW_DATA_EXT_WILD = ".WILD.res"
-
-#dossier contenant les fichiers
-
-#TEMP_FILE = "temps_file_OMR/"
-
-#fonction definit minV maxV et midV (en bas de la fonction)
 
 def calculZone(mat, fileP, minV, maxV, midV, TYPE):
     row = len(mat[:,1])
@@ -118,7 +108,7 @@ def calculZone(mat, fileP, minV, maxV, midV, TYPE):
 
             LL2.append(v2Pos)
             
-    ##### changer ici si c'est traitement HET (0.05, 0.95, 0.5) ou HOM (1.05, 1.95, 1.5)
+  
     fileRes = fileP[0:(len(fileP)-4)]+"._"+str(minV)+"_"+str(maxV)+"_"+ TYPE + "seuil_0.10_res2"  
 
     with open(fileRes,"w") as fi:
@@ -149,13 +139,3 @@ if __name__=="__main__":
         calculZone(result, f, 0.10, 0.90, 0.5, "HET")
         calculZone(result, f, 1.10, 1.90, 1.5, "HOM")
         
-    
- #   print("\n\nWILD")
-
- #   files = getListFile(PATH, RAW_DATA_EXT_WILD)
- #   print(files)
-
- #   for f in files:
- #       result=numpy.array(list(csv.reader(open(f,"rb"),delimiter=' ')))
- #       calculZone(result, f, 0.05, 0.95, 0.5, "HET")
- #       calculZone(result, f, 1.05, 1.95, 1.5, "HOM")
