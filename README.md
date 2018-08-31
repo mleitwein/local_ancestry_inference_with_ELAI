@@ -15,3 +15,14 @@ Also see ELAI documentation http://www.haplotype.org/download/elai-manual.pdf
 ELAI: http://www.haplotype.org/elai.html
 Vcftools: https://vcftools.github.io/man_latest.html
 
+## 01_Run_ELAI
+
+Inference of the local ancestry with ELAI 
+
+## 02_tracts
+
+Determination of the haplotypes length and number. Computation of the Chromosomal Ancestry Imbalance
+
+## 03_introgression_rate
+
+Estimation of the genome-wide introgression rate
