@@ -1,7 +1,9 @@
 ## Estimation of the introgression rate for each LGs and each populations
 
-Lauch 05_introgression_rate_estimation.R from 01_Run_ELAI folder
-
+Run from 01_Run_ELAI folder
+```
+R 05_introgression_rate_estimation.R 
+```
 
 ## merged data 
 
@@ -13,5 +15,6 @@ cat ../01_Run_ELAI/02_info/populations_and_numbers_of_generations.csv.all.pops |
  
 ```
 ## Plot the results
-
+```
 R 07_introgression_rate_plot.R
+```
