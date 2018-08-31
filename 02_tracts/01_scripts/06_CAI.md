@@ -1,7 +1,7 @@
-# CAI estimation 
-# R code in process.. 
+## CAI estimation 
+## R code in process.. 
 
-## Step 1: Retrieve the LG length for each poulaitions from snpinfo.txt files from 01_Run_ELAI/06_outputELAI/
+### Step 1: Retrieve the LG length for each poulaitions from snpinfo.txt files from 01_Run_ELAI/06_outputELAI/
 Create new directory 01_Run_ELAI/10_LG_size/01_length/
 
 ```
@@ -32,6 +32,7 @@ Create new directory 01_Run_ELAI/10_LG_size/01_length/
 ```
 
 Merged all files 
+
 ```
  setwd("../10_LG_size/01_length")
 
@@ -51,31 +52,30 @@ Merged all files
          rm(temp_dataset)
           }
       }
-      
-      dataset1<-unique(dataset)
+     
+     dataset1<-unique(dataset)
      write.table(dataset1, "../LG_length.txt", quote = FALSE, col.names=TRUE,row.names=FALSE,sep="\t")
+
+``` 
      
-     ```
+  ### Step 2: CAI estimation
      
-     
-     ## Step 2: CAI estimation
-     
-     ### Compute the LG size 
-     ```
+  #### Compute the LG size 
+```
      LG<-read.table("LG_length.txt", header=T)
      LG <- within(LG, length <- end - start)
-    ``` 
-     ### Compute the length and the number of tracts
+ ``` 
+   #### Compute the length and the number of tracts
       
-      ```
+  ```
    library(plyr)
    trac<-read.table("length_introgression_final_seuil0.1_final.txt", header=T)
    
    tab_sum<-aggregate( length ~ LG + pop + Ind + HET.HOM, data = trac, sum) 
    tab_nbr <- count(trac, c('LG', 'pop', 'Ind', 'HET.HOM'))
-   ```
+  ```
    
-   ### Estimation of the percentage of domestic ancestry by chromatides and CAI estimation 
+   #### Estimation of the percentage of domestic ancestry by chromatides and CAI estimation 
     
     ```
      tab_sum["percent"] <- NA
@@ -105,7 +105,7 @@ Merged all files
      # estimation of the CAI 
      Intro <- within(Intro, delta <- (percent_HET - percent_HOM)/100) 
      
-     # percentatage of introgression 
+     # percentage of introgression 
      Intro <- within(Intro, total_percent_intro <- (((percent_HET + percent_HOM)*100)/200)) 
      
      ### Estimation of the number of introgressed haplotype by individuals
@@ -117,9 +117,9 @@ Merged all files
  
     write.table(Intro, "summary_intro_seuil_0.1.txt", quote = FALSE, col.names=TRUE,row.names=FALSE,sep="\t")   
      
-     ```
+    ```
      
-     ### Individuals information 
+   #### Individuals information 
      
      ```
      require(data.table)
@@ -145,7 +145,7 @@ Merged all files
      
      ```
      
-     ### Plot 
+   #### Plot 
      ```
       library(ggrepel)
      tab_graph<- read.table("Intro_byInd_seuil_0.1.txt", header=T)
