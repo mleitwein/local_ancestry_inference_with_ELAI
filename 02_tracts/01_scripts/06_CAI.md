@@ -67,17 +67,17 @@ Merged all files
  ``` 
    #### Compute the length and the number of tracts
       
-  ```
+```
    library(plyr)
    trac<-read.table("length_introgression_final_seuil0.1_final.txt", header=T)
    
    tab_sum<-aggregate( length ~ LG + pop + Ind + HET.HOM, data = trac, sum) 
    tab_nbr <- count(trac, c('LG', 'pop', 'Ind', 'HET.HOM'))
-  ```
+```
    
    #### Estimation of the percentage of domestic ancestry by chromatides and CAI estimation 
     
-    ```
+```
      tab_sum["percent"] <- NA
      
      for(t in 1:nrow(LG)){                   #tab contenant la taille totale du LG
@@ -117,11 +117,11 @@ Merged all files
  
     write.table(Intro, "summary_intro_seuil_0.1.txt", quote = FALSE, col.names=TRUE,row.names=FALSE,sep="\t")   
      
-    ```
+```
      
    #### Individuals information 
      
-     ```
+```
      require(data.table)
      Intro<-read.table("summary_intro_seuil_0.1.txt", header=T)
        
@@ -143,10 +143,10 @@ Merged all files
      
      write.table(tab_graph, "Intro_byInd_seuil_0.1.txt", quote = FALSE, col.names=TRUE,row.names=FALSE,sep="\t")
      
-     ```
+ ```
      
    #### Plot 
-     ```
+ ```
       library(ggrepel)
      tab_graph<- read.table("Intro_byInd_seuil_0.1.txt", header=T)
      
@@ -186,7 +186,7 @@ Merged all files
        dpi = 900
      )
      
-     ``` 
+ ``` 
      
      
       
