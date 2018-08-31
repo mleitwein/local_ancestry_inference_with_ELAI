@@ -33,3 +33,6 @@ bash 05_remove_emptyline
 ```
 
 ### Step 4: compute the CAI
+
+Process step by step see 06_CAI 
+
